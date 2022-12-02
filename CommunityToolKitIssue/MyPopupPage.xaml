@@ -1,0 +1,28 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="CommunityToolKitIssue.MyPopupPage"
+               CanBeDismissedByTappingOutsideOfPopup="True"
+               Size="300,600">
+
+    <VerticalStackLayout>
+        <Label Text=" I am  the title" Margin="15,10,15,0" FontSize="21" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalOptions="Center"/>
+        <Label Text="I am the subtitle and in fact may take up more than one line if I wrapped, but I only wrap if I am given a size" Margin="15,10,5,0" FontSize="18"  AutomationProperties.IsInAccessibleTree="True" LineBreakMode="WordWrap"/>
+        <CollectionView ItemsSource="{Binding BackupDataList, Mode=TwoWay}" Margin="10" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Always">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Text="{Binding Name}" Margin="10" LineBreakMode="WordWrap"/>
+                        <RadioButton VerticalOptions="CenterAndExpand" BorderColor="Black" Grid.Column="1" IsEnabled="False" IsChecked="{Binding IsSelected, Mode=OneWay}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+
+</toolkit:Popup>
